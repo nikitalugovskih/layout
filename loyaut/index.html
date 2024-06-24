@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Card</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.casino-block {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 900px;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+.casino-main {
+    display: flex;
+    justify-content: space-between;
+}
+.left-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+}
+.position {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.position a {
+    font-weight: bold;
+}
+.position span {
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    padding: 5px 10px;
+    margin-right: 5px;
+}
+.rating {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    color: green;
+    margin-left: 70px;
+}
+.rating img {
+    height: 16px;
+    width: 16px;
+    margin-right: 5px;
+}
+.rating span {
+    display: flex;
+    align-items: center;
+    background: #e3f7d7;
+    padding: 3px 10px;
+    border-radius: 15px;
+    color: #008800;
+    font-weight: bold;
+}
+.logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 7px;
+}
+.logo img {
+    height: 25px;
+    margin-bottom: 10px;
+}
+.casino-header-info span {
+    background: #FFDE2F;
+    padding: 2px 40px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: #000;
+}
+.bonus {
+    align-items: center;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    padding: 0 20px;
+}
+.bonus h2 {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    margin: 0 0 10px 0;
+}
+.bonus h2 img {
+    margin-right: 7px;
+}
+.bonus ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.bonus ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+.bonus ul li img {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+}
+.action {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.action .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: green;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-bottom: 10px;
+    width: fit-content;
+}
+.action .btn:hover {
+    background-color: #37AD37;
+}
+.action .btn img {
+    margin-left: 10px;
+    height: 23px;
+    width: 23px;
+}
+.action .details {
+    display: flex;
+    align-items: center;
+    color: #008800;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 40px;
+    font-weight: bold;
+}
+.details-section {
+    display: none;
+    margin-top: 20px;
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+}
+.details-section.show {
+    display: block;
+}
+.details-content {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+.details-content div {
+    flex: 1;
+    margin: 0 10px;
+}
+.details-content a {
+    font-weight: bolder;
+    color: #008800;
+}
+.details-content p {
+    color: #808080;
+}
+.details-content div img {
+    display: block;
+    margin-right: 15px;
+}
+.payments_img {
+    display: flex;
+}
+.third_column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.first_column, .second_column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.fourth_column {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+.hidden {
+    display: none;
+}
+.bonus-details {
+    display: none;
+}
+@media screen and (max-width: 768px) {
+    .left-section {
+        margin-right: 15px;
+    }
+    .bonus ul {
+        font-size: 15px;
+    }
+    .action .btn {
+        padding: 7px 15px;
+    }
+    .details-content {
+        display: flex;
+        text-align: center;
+        align-items: baseline;
+    }
+    .details-content p {
+        font-size: 13px;
+    }
+    .payments_img {
+        display: grid;
+        grid-template-columns: repeat(5, 0fr);
+        gap: 2px;
+    }
+    .payments_img img {
+        width: auto;
+        margin: 5px;
+    }
+    .payments_img img:nth-child(1) {
+        grid-column: 1 / span 1;
+    }
+    .payments_img img:nth-child(6) {
+        grid-column: 1 / span 2;
+        margin-top: 10px;
+    }
+}
+@media screen and (max-width: 700px) and (min-width: 376px) {
+    .casino-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-section {
+        width: auto;
+        margin-right: 0px;
+    }
+    .rating {
+        margin-left: 125px;
+    }
+    .bonus {
+        border-left: none;
+        border-right: none;
+    }
+    .casino-header-info {
+        display: flex;
+        white-space: nowrap;
+    }
+    .casino-header-info span {
+        padding: 1px 100px;
+        margin-bottom: 15px;
+    }
+    .bonus ul {
+        display: none;
+    }
+    .details-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .bonus-details li {
+        list-style: none;
+    }
+    .details-content .bonus-details ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .details-content .bonus-details ul li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #333;
+        flex-wrap: nowrap;
+    }
+    .details-content .bonus-details ul li img {
+        height: 16px;
+        width: 16px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+    .details-content .bonus-details ul li div {
+        display: inline-block;
+        white-space: normal;
+    }
+    .action {
+        margin-top: 15px;
+        width: auto;
+    }
+    .action .btn {
+        width: 265px;
+        height: 30px;
+    }
+    .action .details {
+        margin-top: 5px;
+    }
+    .bonus h2 {
+        align-items: flex-start;
+    }
+    .bonus-details {
+        display: block;
+    }
+    .details-content div {
+        margin: 0;
+    }
+
+}
+@media screen and (max-width: 375px) {
+    .casino-main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .left-section {
+        width: auto;
+        margin-right: 0px;
+    }
+    .rating {
+        margin-left: 125px;
+    }
+    .bonus {
+        border-left: none;
+        border-right: none;
+    }
+    .casino-header-info {
+        display: flex;
+        white-space: nowrap;
+    }
+    .casino-header-info span {
+        padding: 1px 100px;
+        margin-bottom: 15px;
+    }
+    .bonus ul {
+        display: none;
+    }
+    .details-content {
+        display: flex;
+        flex-direction: column;
+    }
+    .bonus-details li {
+        list-style: none;
+    }
+    .details-content .bonus-details ul {
+        padding: 0;
+        margin: 0;
+        list-style: none;
+    }
+    .details-content .bonus-details ul li {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 10px;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #333;
+        flex-wrap: nowrap;
+    }
+    .details-content .bonus-details ul li img {
+        height: 16px;
+        width: 16px;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+    .details-content .bonus-details ul li div {
+        display: inline-block;
+        white-space: normal;
+    }
+    .action {
+        margin-top: 15px;
+        width: auto;
+    }
+    .action .btn {
+        width: 265px;
+        height: 30px;
+    }
+    .action .details {
+        margin-top: 5px;
+    }
+    .bonus h2 {
+        align-items: flex-start;
+    }
+    .bonus-details {
+        display: block;
+    }
+    .details-content div {
+        margin: 0;
+    }
+}
+@media screen and (max-width: 320px) {
+    .casino-header-info span {
+        padding: 1px 80px;
+        margin-bottom: 15px;
+    }
+    .position {
+        margin: 0 5px;
+    }
+    .rating {
+        margin-left: 100px;
+    }
+    .logo {
+        margin-top: 15px;
+    }
+    .bonus {
+        padding: 0;
+    }
+    .action .btn {
+        width: 220px;
+        height: 25px;
+    }
+    .details-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
+        grid-gap: 10px;
+        width: 100%;
+        justify-items: start;
+    }
+    .first_column {
+        grid-column: 1 / 2;
+        grid-row: 2;
+        text-align: center;
+    }
+    .second_column {
+        grid-column: 2 / 3;
+        grid-row: 2;
+        text-align: center;
+    }
+    .third_column {
+        grid-column: 1 / 3;
+        grid-row: 3;
+        text-align: center;
+    }
+    .fourth_column {
+        grid-column: 1 / 3;
+        grid-row: 4;
+        text-align: center;
+    }
+    .bonus-details {
+        grid-column: 1 / 3;
+        grid-row: 1;
+        text-align: center;
+    }
+    .details-content div img {
+        margin-right: 5px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="casino-block">
+        <div class="casino-main">
+            <div class="left-section">
+                <div class="position">
+                    <span>1</span>
+                    <a>Bet7K</a>
+                    <div class="rating">
+                        <span><img src="/star.png" alt="Star">9.7</span>
+                    </div>
+                </div>
+                <div class="logo">
+                    <img src="/logo.png" alt="Bet7K">
+                </div>
+                <div class="casino-header-info">
+                    <span>Best Casino</span>
+                </div>
+            </div>
+            <div class="bonus">
+                <h2><img src="/gift.png" alt="Gift">Bônus De 200% No Seu Primeiro Deposito</h2>
+                <ul>
+                    <li><img src="/mark.png" alt="Check">Bônus De 200% No Seu Primeiro Depósito Até R$25.000</li>
+                    <li><img src="/mark.png" alt="Check">Bônus De 200% No Seu</li>
+                </ul>
+            </div>
+            <div class="action">
+                <a href="#" class="btn">Abrir<img src="/arr.png" alt="Arrow"></a>
+                <span class="details" onclick="toggleDetails()">Detalhes<img id="details-arrow" src="/down_arr.png" alt="Arrow"></span>
+            </div>            
+        </div>
+        <div class="details-section hidden" id="details-section">
+            <div class="details-content">
+                <div class="bonus-details">
+                    <ul></ul>
+                </div>
+                <div class="first_column">
+                    <p>Depósito mín</p>
+                    <a>R$ 30</a>
+                </div>
+                <div class="second_column">
+                    <p>Retirada mín</p>
+                    <a>R$ 20</a>
+                </div>
+                <div class="third_column">
+                    <p>Aplicações</p>
+                    <img src="/apple_android.png" alt="App Icons">
+                </div>
+                <div class="fourth_column">
+                    <p>Métodos de Pagamento</p>
+                    <div class="payments_img">
+                        <img src="/payment_1.png" alt="Payment Icons">
+                        <img src="/payment_2.png" alt="Payment Icons">
+                        <img src="/payment_3.png" alt="Payment Icons">
+                        <img src="/payment_4.png" alt="Payment Icons">
+                        <img src="/payment_5.png" alt="Payment Icons">
+                        <img src="/payment_6.png" alt="Payment Icons">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleDetails() {
+            let detailsSection = document.getElementById('details-section');
+            let detailsArrow = document.getElementById('details-arrow');
+            
+            detailsSection.classList.toggle('show');
+            
+            if (detailsSection.classList.contains('show')) {
+                detailsArrow.src = "/up_arr.png";
+            } else {
+                detailsArrow.src = "/down_arr.png";
+            }
+        }
+
+        function moveBonusDetails() {
+            const bonusDetails = document.querySelector('.bonus ul');
+            const detailsContent = document.querySelector('.details-content .bonus-details ul');
+        
+            if ((window.innerWidth <= 375 && window.innerWidth >= 320) || (window.innerWidth <= 700 && window.innerWidth >= 376)) {
+                if (bonusDetails && detailsContent && bonusDetails.children.length > 0) {
+                    while (bonusDetails.firstChild) {
+                        detailsContent.appendChild(bonusDetails.firstChild);
+                    }
+                }
+            } else {
+                if (detailsContent && bonusDetails && detailsContent.children.length > 0) {
+                    while (detailsContent.firstChild) {
+                        bonusDetails.appendChild(detailsContent.firstChild);
+                    }
+                }
+            }
+        }
+        
+        window.addEventListener('resize', moveBonusDetails);
+        window.addEventListener('load', moveBonusDetails);
+    </script>
+</body>
+</html>
